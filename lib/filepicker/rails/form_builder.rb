@@ -3,6 +3,7 @@ module Filepicker
     module FormBuilder
 
       def filepicker_field(method, options = {})
+        return label(method) + file_field(method) if ::Rails.env.test?
         type = options.delete(:dragdrop) ? 'filepicker-dragdrop' : 'filepicker'
 
         input_options = retrive_legacy_filepicker_options(options)
